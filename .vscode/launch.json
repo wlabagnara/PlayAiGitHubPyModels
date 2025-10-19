@@ -1,0 +1,48 @@
+{
+    // Launch configurations for debugging
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug example/app.py",
+            "type": "debugpy",
+            "request": "launch",
+            // Run as a module so the workspace root is on sys.path and top-level packages import cleanly
+            "module": "example.app",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            // Load environment variables from a local .env file (create this locally, do NOT commit).
+            "envFile": "${workspaceFolder}\\.env",
+            "env": {
+                "GITHUB_MODELS_BASE_URL": "https://models.github.ai",
+                "GITHUB_MODELS_API_STYLE": "github",
+                "GITHUB_MODELS_ORG": "",
+                "ENABLE_CLAUDE_SONNET_3_5": "1",
+                //"GITHUB_MODELS_DEFAULT_MODEL": "gpt-3.5",
+                //"GITHUB_MODELS_DEFAULT_MODEL": "gpt-4o",
+                "EXAMPLE_PROMPT": "Write a short sonnet about coding in Python.",
+                
+                // Ensure the workspace root is on PYTHONPATH when debugging
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            // Use the workspace venv if present
+            "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Debug tests (pytest)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": ["-q"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "GITHUB_MODELS_API_KEY": "testkey",
+                "ENABLE_CLAUDE_SONNET_3_5": "1",
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "justMyCode": false
+        }
+    ]
+}

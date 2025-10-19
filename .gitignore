@@ -7,7 +7,7 @@ __pycache__/
 .venv/
 
 # Local VS Code settings (optional)
-.vscode/
+#.vscode/
 
 # Backup files
 *.bak
